@@ -8,7 +8,7 @@
         "rating": "7",
         "comment": "Do buy the hype."
     },
-    Click on an image from the #ramen-menu div and see all the info about that ramen displayed inside the #ramen-detail div and where it says insert comment here and insert rating here.
+    
 
   */
 
@@ -55,24 +55,30 @@ const url = "http://localhost:3000/ramens"
             comment.textContent = ramen.comment
             console.log(newImg)
         })
-            // window.addEventListener("DOMContentLoaded",()=> renderImg(ramen))
     }
 
 
 const createNewRamen = (e) => {
-    //preventing the page to refresh every time they create new ramen
-    e.preventDeafult()
+    const newRamenName = document.getElementById('new-name').value;
+    const newRestaurantName =document.getElementById('new-restaurant').value;
+    const newImage =document.getElementById('new-image').value;
+    const newRating =document.getElementById('new-rating').value;
+    const newComment =document.getElementById('new-comment').value;
+
+
+    ramenForm.addEventListener("submit", (e) => {
+            //preventing the page to refresh every time they create new ramen
+        e.preventDefault()
 
     //creating a new ramen and setting their values
-
-    let newRamen = {}
-
-  newRamen.name = e.name.value;
-  newRamen.restaurant = e.restaurant.value;
-  newRamen.image = e.image.value;
-  newRamen.rating = e.rating.value;
-  newRamen.comment = e["new-comment"].value;
-
+        let newRamen = {}
+  newRamen.name = newRamenName
+  newRamen.restaurant = newRestaurantName
+  newRamen.image = newImage
+  newRamen.rating = newRating
+  newRamen.comment = newComment
+    })
+renderImg(newRamen)
 }
 
     // window.addEventListener("DOMContentLoaded",()=> renderImg(ramen))
